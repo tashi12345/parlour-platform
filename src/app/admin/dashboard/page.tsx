@@ -32,16 +32,38 @@ export default function AdminDashboard() {
     // Re-enable authentication when deploying for actual clients
 
     useEffect(() => {
-        if (!db) return;
+        // Timeout fallback - if loading takes more than 3 seconds, show dashboard anyway
+        const timeout = setTimeout(() => {
+            setLoading(false);
+        }, 3000);
+
+        if (!db) {
+            // Firebase not initialized, still show dashboard with empty state
+            setLoading(false);
+            clearTimeout(timeout);
+            return;
+        }
 
         const q = query(collection(db, "appointments"), orderBy("createdAt", "desc"));
-        const unsubscribe = onSnapshot(q, (snapshot) => {
-            const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Appointment));
-            setAppointments(data);
-            setLoading(false);
-        });
+        const unsubscribe = onSnapshot(
+            q,
+            (snapshot) => {
+                const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() } as Appointment));
+                setAppointments(data);
+                setLoading(false);
+                clearTimeout(timeout);
+            },
+            (error) => {
+                console.error("Error fetching appointments:", error);
+                setLoading(false); // Still show dashboard even on error
+                clearTimeout(timeout);
+            }
+        );
 
-        return () => unsubscribe();
+        return () => {
+            unsubscribe();
+            clearTimeout(timeout);
+        };
     }, []);
 
     const updateStatus = async (id: string, status: string) => {
@@ -55,7 +77,13 @@ export default function AdminDashboard() {
         today: appointments.filter(a => a.date === new Date().toISOString().split("T")[0]).length
     };
 
-    if (loading) return <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading...</div>;
+    if (loading) return (
+        <div style={{ minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ width: '40px', height: '40px', border: '4px solid var(--border)', borderTop: '4px solid var(--primary)', borderRadius: '50%', animation: 'spin 1s linear infinite' }}></div>
+            <p style={{ color: 'var(--text-muted)' }}>Loading dashboard...</p>
+            <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+        </div>
+    );
 
     return (
         <div style={{ minHeight: '100vh', background: '#050505', display: 'flex' }}>
