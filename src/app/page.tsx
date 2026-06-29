@@ -172,9 +172,12 @@ export default function Home() {
       {/* Gallery Section */}
       <section style={{ background: 'var(--surface)', padding: '100px 24px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: 'clamp(32px, 5vw, 42px)', marginBottom: '60px', textAlign: 'center', fontWeight: 800 }}>
-            Our <span className="gradient-text">Clinic Gallery</span>
+          <h2 style={{ fontSize: 'clamp(32px, 5vw, 42px)', marginBottom: '16px', textAlign: 'center', fontWeight: 800 }}>
+            Our <span className="gradient-text">Salon Gallery</span>
           </h2>
+          <p style={{ color: 'var(--text-muted)', textAlign: 'center', maxWidth: '600px', margin: '0 auto 60px', fontSize: '18px' }}>
+            See our beautiful transformations and luxurious salon environment
+          </p>
 
           <div style={{
             display: 'grid',
@@ -182,10 +185,12 @@ export default function Home() {
             gap: '24px'
           }}>
             {[
-              "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?q=80&w=800&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?q=80&w=800&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1522337094846-8a818192de1f?q=80&w=800&auto=format&fit=crop",
               "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?q=80&w=800&auto=format&fit=crop",
-              "https://images.unsplash.com/photo-1522337660859-02fbefca4702?q=80&w=800&auto=format&fit=crop"
+              "https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=800&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1519415387722-a1c3bbef716c?q=80&w=800&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=800&auto=format&fit=crop",
+              "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?q=80&w=800&auto=format&fit=crop"
             ].map((img, i) => (
               <motion.div
                 key={i}
@@ -204,8 +209,10 @@ export default function Home() {
               >
                 <img
                   src={img}
-                  alt={`Clinic ${i + 1}`}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                  alt={`Salon ${i + 1}`}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'transform 0.3s ease' }}
+                  onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.05)'}
+                  onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
                 />
               </motion.div>
             ))}
@@ -219,7 +226,7 @@ export default function Home() {
           <div>
             <h3 style={{ marginBottom: '20px', letterSpacing: '1px', fontSize: '18px' }}>{BRAND_CONFIG.clinicName.toUpperCase()}</h3>
             <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>
-              Professional skin care in {BRAND_CONFIG.city}. {BRAND_CONFIG.tagline}
+              Luxury bridal and beauty services in {BRAND_CONFIG.city}. {BRAND_CONFIG.tagline}
             </p>
           </div>
           <div>
