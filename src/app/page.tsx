@@ -32,11 +32,11 @@ export default function Home() {
           viewport={{ once: true }}
         >
           <h2 style={{ fontSize: 'clamp(32px, 5vw, 42px)', marginBottom: '16px', textAlign: 'center', fontWeight: 800 }}>
-            Our <span className="gradient-text">Skin Care Treatments</span>
+            Our <span className="gradient-text">Premium Services</span>
           </h2>
 
           <p style={{ color: 'var(--text-muted)', textAlign: 'center', maxWidth: '600px', margin: '0 auto 60px', fontSize: '18px' }}>
-            Advanced dermatology and laser treatments with latest technology and experienced specialists
+            Professional bridal makeup, hair styling, and beauty treatments for every occasion
           </p>
         </motion.div>
 
@@ -78,9 +78,9 @@ export default function Home() {
             gap: '40px'
           }}>
             {[
-              { title: "Expert Dermatologist", desc: "Highly qualified skin specialist with years of experience" },
-              { title: "Advanced Technology", desc: "Latest laser and skincare equipment for best results" },
-              { title: "Affordable Packages", desc: "Quality skin care treatments at competitive prices" },
+              { title: "Professional Artists", desc: "Expert makeup artists and hair stylists with years of experience" },
+              { title: "Premium Products", desc: "High-quality branded makeup and hair products for lasting results" },
+              { title: "Bridal Specialists", desc: "Specialized in bridal makeup and complete bridal packages" },
               { title: "Flexible Hours", desc: `${BRAND_CONFIG.hours.weekdays} | ${BRAND_CONFIG.hours.saturday}` }
             ].map((service, i) => (
               <div key={i} className="premium-card" style={{ padding: '32px', textAlign: 'center' }}>
@@ -102,10 +102,10 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <h2 style={{ fontSize: 'clamp(32px, 5vw, 42px)', marginBottom: '16px', textAlign: 'center', fontWeight: 800 }}>
-              What Our <span className="gradient-text">Patients Say</span>
+              What Our <span className="gradient-text">Clients Say</span>
             </h2>
             <p style={{ color: 'var(--text-muted)', textAlign: 'center', maxWidth: '600px', margin: '0 auto 60px', fontSize: '18px' }}>
-              Real experiences from our valued patients
+              Real experiences from our valued clients
             </p>
           </motion.div>
 
@@ -116,23 +116,23 @@ export default function Home() {
           }}>
             {[
               {
-                name: "Sana Ahmed",
-                treatment: "Hydra Facial",
-                text: "My skin has never looked better! Dr. Farah's hydra facial treatment gave me amazing glow. Highly professional service!",
+                name: "Ayesha Malik",
+                treatment: "Bridal Makeup",
+                text: "Maryam Salon made my wedding day absolutely perfect! The bridal makeup was flawless and lasted all day. Highly recommend!",
                 rating: 5,
                 image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop"
               },
               {
-                name: "Maria Khan",
-                treatment: "Laser Hair Removal",
-                text: "Best decision ever! The laser hair removal was painless and results are fantastic. Dr. Farah is amazing!",
+                name: "Sana Khan",
+                treatment: "Party Makeup",
+                text: "Best party makeup experience! The team is so professional and talented. I looked stunning and felt confident!",
                 rating: 5,
                 image: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop"
               },
               {
-                name: "Hina Tariq",
-                treatment: "Acne Treatment",
-                text: "Finally found a solution to my acne problem! Professional treatment with visible results. Thank you Dr. Farah!",
+                name: "Fatima Ahmed",
+                treatment: "Hair Styling",
+                text: "Amazing hair color and styling! They really know what they're doing. Will definitely be coming back regularly!",
                 rating: 5,
                 image: "https://images.unsplash.com/photo-1580489944761-15a19d654956?q=80&w=150&auto=format&fit=crop"
               }

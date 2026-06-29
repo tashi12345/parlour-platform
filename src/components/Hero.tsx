@@ -18,8 +18,8 @@ const Hero = () => {
                         transition={{ duration: 0.8 }}
                         className={styles.title}
                     >
-                        Expert <span className="gradient-text">Skin Care</span> <br />
-                        in <span className={styles.highlight}>{BRAND_CONFIG.city}</span>
+                        Luxury <span className="gradient-text">Bridal & Beauty</span> <br />
+                        Services in <span className={styles.highlight}>{BRAND_CONFIG.city}</span>
                     </motion.h1>
 
                     <motion.p
@@ -28,8 +28,8 @@ const Hero = () => {
                         transition={{ duration: 0.8, delay: 0.2 }}
                         className={styles.subtitle}
                     >
-                        Advanced dermatology and laser treatments for radiant, healthy skin.
-                        From acne solutions to anti-aging treatments, we've got you covered.
+                        Premium makeup, hair styling, and beauty treatments for your special moments.
+                        From bridal transformations to everyday glamour, we make you shine.
                     </motion.p>
 
                     <motion.div
