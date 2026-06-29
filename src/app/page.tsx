@@ -65,6 +65,103 @@ export default function Home() {
         onClose={() => setIsModalOpen(false)}
       />
 
+      {/* Bridal Packages Section */}
+      <section style={{ background: 'linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%)', padding: '100px 24px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'radial-gradient(circle at 30% 50%, rgba(212, 175, 55, 0.1) 0%, transparent 50%)', pointerEvents: 'none' }}></div>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            <h2 style={{ fontSize: 'clamp(32px, 5vw, 42px)', marginBottom: '16px', textAlign: 'center', fontWeight: 800 }}>
+              Exclusive <span className="gradient-text">Bridal Packages</span>
+            </h2>
+            <p style={{ color: 'var(--text-muted)', textAlign: 'center', maxWidth: '600px', margin: '0 auto 60px', fontSize: '18px' }}>
+              Complete bridal transformation packages designed for your special day
+            </p>
+          </motion.div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '32px' }}>
+            {[
+              {
+                name: "Classic Bridal",
+                price: "50,000",
+                popular: false,
+                features: ["Bridal Makeup", "Hair Styling", "Dupatta Setting", "Jewelry Placement", "1 Makeup Trial"]
+              },
+              {
+                name: "Premium Bridal",
+                price: "85,000",
+                popular: true,
+                features: ["HD Bridal Makeup", "Professional Hair Styling", "Dupatta & Jewelry Setting", "False Lashes", "2 Makeup Trials", "Touch-up Kit"]
+              },
+              {
+                name: "Luxury Bridal",
+                price: "1,50,000",
+                popular: false,
+                features: ["Luxury HD Makeup", "Designer Hair Styling", "Complete Styling", "Premium Lashes & Accessories", "3 Trials", "Touch-up Service", "Photography Makeup"]
+              }
+            ].map((pkg, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                viewport={{ once: true }}
+                style={{
+                  background: pkg.popular ? 'linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(184, 134, 11, 0.05) 100%)' : 'rgba(255, 255, 255, 0.03)',
+                  backdropFilter: 'blur(10px)',
+                  border: pkg.popular ? '2px solid var(--primary)' : '1px solid rgba(255, 255, 255, 0.08)',
+                  borderRadius: '24px',
+                  padding: '40px 32px',
+                  position: 'relative',
+                  transition: 'all 0.3s ease'
+                }}
+                className="premium-card"
+              >
+                {pkg.popular && (
+                  <div style={{
+                    position: 'absolute',
+                    top: '-12px',
+                    left: '50%',
+                    transform: 'translateX(-50%)',
+                    background: 'linear-gradient(135deg, #d4af37 0%, #b8860b 100%)',
+                    padding: '6px 20px',
+                    borderRadius: '20px',
+                    fontSize: '12px',
+                    fontWeight: 700,
+                    letterSpacing: '1px'
+                  }}>
+                    MOST POPULAR
+                  </div>
+                )}
+                <h3 style={{ fontSize: '28px', fontWeight: 700, marginBottom: '16px', textAlign: 'center' }}>{pkg.name}</h3>
+                <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+                  <span style={{ fontSize: '48px', fontWeight: 800, color: 'var(--primary)' }}>₨{pkg.price}</span>
+                </div>
+                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '32px' }}>
+                  {pkg.features.map((feature, j) => (
+                    <li key={j} style={{ display: 'flex', alignItems: 'center', gap: '12px', color: 'var(--text-muted)' }}>
+                      <span style={{ color: 'var(--primary)', fontSize: '20px' }}>✓</span>
+                      <span>{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  className="btn-primary"
+                  style={{ width: '100%', justifyContent: 'center', background: pkg.popular ? 'var(--primary)' : 'transparent', border: pkg.popular ? 'none' : '2px solid var(--primary)', color: pkg.popular ? '#000' : 'var(--primary)' }}
+                  onClick={() => window.open(`https://wa.me/${BRAND_CONFIG.whatsapp}?text=Hi! I'm interested in the ${pkg.name} package`, '_blank')}
+                >
+                  Book Now
+                </button>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us Section */}
       <section style={{ background: 'var(--surface)', padding: '100px 24px' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
